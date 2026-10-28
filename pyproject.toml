@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loopguard-langgraph"
+version = "0.1.0"
+description = "loopguard's semantic loop detection as a drop-in guard node for LangGraph agent graphs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Habib Ur Rehman" }]
+keywords = ["langgraph", "agents", "loop-detection", "guardrails", "llm"]
+dependencies = [
+    "langgraph>=0.2",
+    "langchain-core>=0.3",
+    # The base detector. NOTE: the PyPI name "loopguard" belongs to an
+    # unrelated package, so the dependency points at the GitHub repo.
+    "loopguard @ git+https://github.com/habib-analyst/loopguard@main",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/habib-analyst/loopguard-langgraph"
+Base = "https://github.com/habib-analyst/loopguard"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,194 @@
+{
+  "calibrated_threshold": 0.3,
+  "recursion_limit_unguarded": 50,
+  "max_steps_cap": 10,
+  "scenarios": {
+    "semantic_loop": {
+      "unguarded": {
+        "status": "recursion_limit",
+        "agent_steps": 50,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "stopped_cap",
+        "agent_steps": 10,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "stopped_loop",
+        "agent_steps": 9,
+        "detections": 4,
+        "reflections": 3,
+        "stop_reason": "semantic loop re-detected after 3 reflections; giving up honestly (similarity 0.31 to step 0)"
+      }
+    },
+    "exact_repeat": {
+      "unguarded": {
+        "status": "recursion_limit",
+        "agent_steps": 50,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "stopped_cap",
+        "agent_steps": 10,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "stopped_loop",
+        "agent_steps": 8,
+        "detections": 4,
+        "reflections": 3,
+        "stop_reason": "semantic loop re-detected after 3 reflections; giving up honestly (similarity 1.00 to step 0)"
+      }
+    },
+    "clean_short": {
+      "unguarded": {
+        "status": "solved",
+        "agent_steps": 5,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "solved",
+        "agent_steps": 5,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "solved",
+        "agent_steps": 5,
+        "detections": 0,
+        "reflections": 0,
+        "stop_reason": ""
+      }
+    },
+    "clean_long": {
+      "unguarded": {
+        "status": "solved",
+        "agent_steps": 14,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "stopped_cap",
+        "agent_steps": 10,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "solved",
+        "agent_steps": 14,
+        "detections": 0,
+        "reflections": 0,
+        "stop_reason": ""
+      }
+    },
+    "retry_progress": {
+      "unguarded": {
+        "status": "solved",
+        "agent_steps": 4,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "solved",
+        "agent_steps": 4,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "solved",
+        "agent_steps": 4,
+        "detections": 0,
+        "reflections": 0,
+        "stop_reason": ""
+      }
+    },
+    "loop_recover": {
+      "unguarded": {
+        "status": "recursion_limit",
+        "agent_steps": 50,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "stopped_cap",
+        "agent_steps": 10,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "solved",
+        "agent_steps": 3,
+        "detections": 1,
+        "reflections": 1,
+        "stop_reason": ""
+      }
+    },
+    "loop_rephrase": {
+      "unguarded": {
+        "status": "recursion_limit",
+        "agent_steps": 50,
+        "detections": null,
+        "reflections": 0
+      },
+      "max_steps": {
+        "status": "stopped_cap",
+        "agent_steps": 10,
+        "detections": null,
+        "reflections": 0
+      },
+      "loopguard": {
+        "status": "reflection_rejected",
+        "agent_steps": 4,
+        "detections": 2,
+        "reflections": 1,
+        "stop_reason": "reflection proposed a strategy too similar (max sim 0.58) to a failed one; refusing to re-loop"
+      }
+    }
+  },
+  "aggregates": {
+    "mean_steps_on_looping_scenarios": {
+      "unguarded": 50.0,
+      "max_steps": 10.0,
+      "loopguard": 7.0
+    },
+    "solved_of_solvable": {
+      "unguarded": 3,
+      "max_steps": 2,
+      "loopguard": 4
+    },
+    "n_solvable": 4,
+    "clean_scenarios_falsely_stopped": {
+      "unguarded": [],
+      "max_steps": [
+        "clean_long"
+      ],
+      "loopguard": []
+    },
+    "loopguard_detections_on_clean": {
+      "clean_short": 0,
+      "clean_long": 0,
+      "retry_progress": 0
+    },
+    "loopguard_loop_recover": {
+      "status": "solved",
+      "agent_steps": 3,
+      "detections": 1,
+      "reflections": 1,
+      "stop_reason": ""
+    },
+    "loopguard_loop_rephrase": {
+      "status": "reflection_rejected",
+      "agent_steps": 4,
+      "detections": 2,
+      "reflections": 1,
+      "stop_reason": "reflection proposed a strategy too similar (max sim 0.58) to a failed one; refusing to re-loop"
+    }
+  },
+  "note": "scripted deterministic agents in real LangGraph graphs; threshold calibrated on separately generated trajectories; agent_steps counted at the agent node"
+}
